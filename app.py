@@ -1,11 +1,12 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+import os
 
 app = Flask(__name__)
 
 # Nombre de nuestra base de datos
-DATABASE = "datos.db"
+DATABASE = os.environ.get("DATABASE_PATH", "datos.db")
 
 
 # Conectar con SQLite
@@ -68,12 +69,7 @@ def guardar():
 
 
 # Iniciar aplicación
+crear_tabla()
+
 if __name__ == "__main__":
-
-    crear_tabla()
-
-    app.run(
-        host="0.0.0.0",
-        port=5000,
-        debug=True
-    )
+    app.run(host="0.0.0.0", port=5000, debug=True)
