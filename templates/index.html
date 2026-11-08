@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi primera aplicación</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .contenedor {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        h1, h2 {
+            color: #2563eb;
+        }
+
+        input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .registro {
+            background: #f8fafc;
+            padding: 15px;
+            margin-top: 12px;
+            border-left: 4px solid #2563eb;
+            border-radius: 5px;
+        }
+
+        .registro p {
+            color: #475569;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>¡Hola! 👋</h1>
+
+    <p>Mi primera aplicación con Python, Flask y SQLite.</p>
+
+    <h2>Registrar información</h2>
+
+    <form action="/guardar" method="POST">
+
+        <input
+            type="text"
+            name="nombre"
+            placeholder="Escribe tu nombre"
+            maxlength="100"
+            required
+        >
+
+        <textarea
+            name="mensaje"
+            placeholder="Escribe un mensaje"
+            maxlength="1000"
+            required
+        ></textarea>
+
+        <button type="submit">Guardar información</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Información registrada</h2>
+
+    {% if registros %}
+
+        {% for registro in registros %}
+
+            <div class="registro">
+
+                <strong>{{ registro.nombre }}</strong>
+
+                <p>{{ registro.mensaje }}</p>
+
+                <small>Registro #{{ registro.id }}</small>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>Todavía no hay registros.</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+

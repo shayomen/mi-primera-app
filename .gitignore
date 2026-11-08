@@ -1,0 +1,17 @@
+# Entorno virtual de Python
+venv/
+.venv/
+
+# Archivos temporales
+__pycache__/
+*.pyc
+
+# Base de datos local
+datos.db
+*.db
+
+# Configuración local
+.env
+
+# Configuración de editores
+.vscode/
